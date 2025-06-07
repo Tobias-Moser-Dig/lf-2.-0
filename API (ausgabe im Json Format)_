@@ -1,0 +1,44 @@
+import requests
+import xmltodict
+import json
+
+def search_lyric_text(lyric_text):
+    url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricText"
+    params = {'lyricText': lyric_text}
+    print(f"Anfrage an die API: {url}?lyricText={lyric_text}")
+
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data_dict = xmltodict.parse(response.text)
+        results = data_dict.get("ArrayOfSearchLyricResult", {}).get("SearchLyricResult", [])
+
+
+        if isinstance(results, dict):
+            results = [results]
+
+
+        simplified = []
+        for entry in results:
+            if entry is None:
+                continue
+            simplified.append({
+                "Artist": entry.get("Artist"),
+                "Song": entry.get("Song"),
+                "LyricId": entry.get("LyricId"),
+
+            })
+
+
+        print(json.dumps(simplified, indent=2, ensure_ascii=False))
+        return simplified
+    else:
+        print(f"Fehler: {response.status_code}")
+        return []
+
+if __name__ == "__main__":
+    lyric_text = input("Gib den Text der Lyrics ein (max. 250 Zeichen): ")
+    if 0 < len(lyric_text) <= 250:
+        search_lyric_text(lyric_text)
+    else:
+        print("Bitte gib einen gültigen Text ein.")
