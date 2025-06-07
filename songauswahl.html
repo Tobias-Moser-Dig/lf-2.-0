@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyrics Finder – Songauswahl</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div style="height: 40px;"></div>
+
+  <div class="results">
+    <h2>Suchergebnisse</h2>
+    
+<div class="result-entry">
+  <div class="result-info">
+    <div class="song-title">Viva la Vida</div>
+    <div class="song-artist">Von: Coldplay</div>
+    <a href="#" class="spotify-link">Der Song auf Spotify</a>
+    <div class="lyrics">
+      I hear Jerusalem bells a-ringin'
+Roman Cavalry choirs are singin'
+<span class="highlight">Be my mirror</span>, my sword and shield
+My missionaries in a foreign field
+    </div>
+  </div>
+  <div class="result-image"></div>
+</div>
+
+
+<div class="result-entry">
+  <div class="result-info">
+    <div class="song-title">Let It Be</div>
+    <div class="song-artist">Von: The Beatles</div>
+    <a href="#" class="spotify-link">Der Song auf Spotify</a>
+    <div class="lyrics">
+      When I find myself in times of trouble
+Mother Mary comes to me
+<span class="highlight">Speaking words of wisdom</span>, let it be
+    </div>
+  </div>
+  <div class="result-image"></div>
+</div>
+
+
+<div class="result-entry">
+  <div class="result-info">
+    <div class="song-title">Someone Like You</div>
+    <div class="song-artist">Von: Adele</div>
+    <a href="#" class="spotify-link">Der Song auf Spotify</a>
+    <div class="lyrics">
+      Never mind, I'll find someone like you
+I wish nothing but the best for you too
+<span class="highlight">Don't forget me</span>, I beg
+    </div>
+  </div>
+  <div class="result-image"></div>
+</div>
+
+  </div>
+
+  <script>
+    fetch("header.html").then(r => r.text()).then(t => {
+      document.getElementById("header-placeholder").innerHTML = t;
+    });
+  </script>
+</body>
+</html>

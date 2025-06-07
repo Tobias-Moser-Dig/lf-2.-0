@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyrics Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="search-container">
+    <form action="songauswahl.html" method="GET">
+      <input class="search-box" name="query" type="text" placeholder="Song suchen..." required />
+      <button type="submit" class="search-button">🔍</button>
+    </form>
+  </div>
+
+  <script>
+    fetch("header.html").then(r => r.text()).then(t => {
+      document.getElementById("header-placeholder").innerHTML = t;
+    });
+  </script>
+</body>
+</html>
